@@ -36,7 +36,7 @@ const LoanOffer = ({ offer }: { offer: LoanOfferProps }) => {
   );
 };
 
-export const LenderResultPage = () => {
+export const LoanResultPage = () => {
   const { formData, loanOffers, updateFormData, setLoanOffers } =
     useContext(FormContext)!;
   const navigate = useNavigate();

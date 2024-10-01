@@ -8,7 +8,6 @@ import { SelectInput } from '../components/SelectInput';
 import { submitForm } from '../services/formService';
 import { LoanDetailsFormProps, loanDetailsSchema } from '../models/formModel';
 
-// TODO: get the value from constants
 const loanPurposeOptions = [
   { value: 'CAR', label: 'Car' },
   { value: 'BIKE', label: 'Motorbike' },
@@ -22,7 +21,7 @@ export const LoanDetailsPage = () => {
   useEffect(() => {
     console.log('useEffect', loanOffers);
     if (loanOffers) {
-      navigate('/lender-result');
+      navigate('/loan-result');
     }
   }, [loanOffers, navigate]);
 
@@ -36,8 +35,10 @@ export const LoanDetailsPage = () => {
   });
 
   const onSubmit = (data: LoanDetailsFormProps) => {
-    updateFormData({ loanDetails: data });
-    submitForm(formData).then((res) => {
+    const updatedFormData = { ...formData, loanDetails: data };
+
+    updateFormData(updatedFormData);
+    submitForm(updatedFormData).then((res) => {
       if (res.outcome === 'SUCCESS') {
         setLoanOffers(res.data.loanOffers);
       }
