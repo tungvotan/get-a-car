@@ -48,7 +48,7 @@ https://github.com/user-attachments/assets/05d3fdca-9fee-4dbd-9b95-29ed4b1f9854
 3. **Security Considerations**  
    **Challenge**: To be honest, I don't have much exp on security. And there is no auth requirements so I skipped that.
 
-   **Decision**: I implemented a secure CORS policy to restrict access to the API to localhost only and plan to add rate limiting to prevent abuse and brute force attacks.
+   **Decision**: I implemented a secure CORS policy to restrict access to the API to localhost only and plan to add rate limiting to prevent abuse and brute force attacks. And basic logger for monitoring.
 
 #### Future Enhancements:
 - **Rate Limiting**: Add rate limiting to further secure the API and prevent abuse.
