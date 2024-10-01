@@ -12,6 +12,10 @@ This project is a full-stack application for submitting personal and loan-relate
 
 The tool allows users to enter their personal and loan-related details through a multi-step form. Upon submission, the backend processes the data and returns loan offers from multiple lenders. This solution is ideal for digital broker platforms.
 
+
+https://github.com/user-attachments/assets/05d3fdca-9fee-4dbd-9b95-29ed4b1f9854
+
+
 ### Front-End
 - Implemented with Mobile-first approach.
 
