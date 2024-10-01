@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app'; // Import the Express app
+import app from '../app';
 
 describe('Form API Endpoints', () => {
   // Test case for valid form submission
@@ -22,14 +22,16 @@ describe('Form API Endpoints', () => {
           deposit: 5000,
           loanPurpose: 'CAR',
           loanTerm: 5,
-          interestRate: 5.5,
-          loanAmount: 25000,
         },
       });
 
-    expect(response.status).toBe(200); // Expect the status code to be 200
-    expect(response.body).toHaveProperty('data'); // Check if the returned data is correct
-    console.log('firszzzzzt', response.body);
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('data');
+    expect(response.body.data.loanOffers).toHaveLength(3);
+    // Make sure the calculation is correct
+    expect(Math.floor(response.body.data.loanOffers[0].monthlyPayment)).toEqual(
+      477
+    );
   });
 
   // Test case for invalid form submission
@@ -55,7 +57,7 @@ describe('Form API Endpoints', () => {
         },
       });
 
-    expect(response.status).toBe(400); // Expect the status code to be 400 for validation error
-    expect(response.body).toHaveProperty('outcome', 'FAILED_TO_PARSE_FORM'); // Validation error message
+    expect(response.status).toBe(400);
+    expect(response.body).toHaveProperty('outcome', 'FAILED_TO_PARSE_FORM');
   });
 });
