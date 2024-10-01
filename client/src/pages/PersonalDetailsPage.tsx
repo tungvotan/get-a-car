@@ -19,10 +19,12 @@ export const PersonalDetailsPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<PersonalDetailsFormProps>({
     defaultValues: formData.personalDetails,
     resolver: zodResolver(personalDetailsSchema),
   });
+  const employmentStatus = watch('employmentStatus');
 
   const onSubmit = (data: PersonalDetailsFormProps) => {
     updateFormData({ personalDetails: data });
@@ -79,11 +81,13 @@ export const PersonalDetailsPage = () => {
         error={errors.employmentStatus?.message}
         {...register('employmentStatus')}
       />
-      <TextInput
-        label="Employer Name"
-        {...register('employerName')}
-        error={errors.employerName?.message}
-      />
+      {employmentStatus === 'EMPLOYED' && (
+        <TextInput
+          label="Employer Name"
+          {...register('employerName')}
+          error={errors.employerName?.message}
+        />
+      )}
       <NumberInput
         label="Annual Income"
         {...register('annualIncome', { valueAsNumber: true })}
