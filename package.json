@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "start:client": "tmux new-session -s client_server 'cd client && npm start' \\; split-window -h 'cd server && npm start' \\; attach",
+    "e2e-test": "cd client && npx cypress run",
+    "api-test": "cd server && npm test",
+    "bootstrap": "npm run install:client && npm run install:server",
+    "start": "npm run start:client"
+  }
+}
