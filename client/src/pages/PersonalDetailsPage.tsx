@@ -3,14 +3,11 @@ import { TextInput } from '../components/TextInput';
 import { DateInput } from '../components/DateInput';
 import { NumberInput } from '../components/NumberInput';
 import { useNavigate } from 'react-router-dom';
-import {
-  FormContext,
-  PersonalDetailsFormProps,
-  personalDetailsSchema,
-} from '../context/FormContext';
+import { FormContext } from '../context/formContext';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { SelectInput } from '../components/SelectInput';
+import { PersonalDetailsFormProps, personalDetailsSchema } from '../models/formModel';
 
 export const PersonalDetailsPage = () => {
   const navigate = useNavigate();

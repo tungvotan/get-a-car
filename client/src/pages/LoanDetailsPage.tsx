@@ -1,19 +1,31 @@
-import React, { useContext } from 'react';
-import { TextInput } from '../components/TextInput';
+import React, { useContext, useEffect } from 'react';
 import { NumberInput } from '../components/NumberInput';
 import { useNavigate } from 'react-router-dom';
-import {
-  FormContext,
-  LoanDetailsFormProps,
-  loanDetailsSchema,
-} from '../context/FormContext';
+import { FormContext } from '../context/formContext';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { SelectInput } from '../components/SelectInput';
+import { submitForm } from '../services/formService';
+import { LoanDetailsFormProps, loanDetailsSchema } from '../models/formModel';
+
+// TODO: get the value from constants
+const loanPurposeOptions = [
+  { value: 'CAR', label: 'Car' },
+  { value: 'BIKE', label: 'Motorbike' },
+  { value: 'PERSONAL', label: 'Personal' },
+];
 
 export const LoanDetailsPage = () => {
-  const { formData, updateFormData } = useContext(FormContext)!;
+  const { formData, updateFormData, lenderResult, setLenderResult } =
+    useContext(FormContext)!;
   const navigate = useNavigate();
+  useEffect(() => {
+    console.log('useEffect', lenderResult);
+    if (lenderResult) {
+      navigate('/lender-result');
+    }
+  }, [lenderResult, navigate]);
+
   const {
     register,
     handleSubmit,
@@ -25,23 +37,21 @@ export const LoanDetailsPage = () => {
 
   const onSubmit = (data: LoanDetailsFormProps) => {
     updateFormData({ loanDetails: data });
-    navigate('/summary');
+    submitForm(formData).then((res) => {
+      if (res.outcome === 'SUCCESS') {
+        setLenderResult(res.data.loanOffers);
+      }
+      // TODO: add error message
+    });
   };
 
   const handleNavigateBack = () => {
     navigate('/');
   };
 
-  // TODO: get the value from constants
-  const loanPurposeOptions = [
-    { value: 'CAR', label: 'Car' },
-    { value: 'BIKE', label: 'Motorbike' },
-    { value: 'PERSONAL', label: 'Personal' },
-  ];
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="p-8 max-w-md mx-auto">
-      <h1>Personal Details</h1>
+      <h1>Loan detail page</h1>
       <NumberInput
         label="Vehicle price"
         {...register('vehiclePrice', { valueAsNumber: true })}

@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PersonalDetailsPage } from './pages/PersonalDetailsPage';
 import { LoanDetailsPage } from './pages/LoanDetailsPage';
 import { LenderResultPage } from './pages/LenderResultPage';
-import { FormProvider } from './context/FormContext';
+import { FormProvider } from './context/formContext';
 
 function App() {
   return (
