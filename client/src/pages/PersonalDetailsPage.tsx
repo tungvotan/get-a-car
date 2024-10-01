@@ -24,7 +24,6 @@ export const PersonalDetailsPage = () => {
   });
 
   const onSubmit = (data: PersonalDetailsFormProps) => {
-    console.log('firszzzzzzt', data);
     updateFormData({ personalDetails: data });
     navigate('/loan-details');
   };
@@ -32,29 +31,16 @@ export const PersonalDetailsPage = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="p-8 max-w-md mx-auto">
       <h1>Personal Details</h1>
-      <TextInput
-        key="firstname"
-        label="First name"
-        {...register('firstName')}
-      />
-      <TextInput key="lastname" label="Last name" {...register('lastName')} />
+      <TextInput label="First name" {...register('firstName')} />
+      <TextInput label="Last name" {...register('lastName')} />
       <DateInput label="Date of Birth" {...register('dateOfBirth')} />
-      <TextInput key="email" label="Email" {...register('email')} />
-      <NumberInput key="number" label="Mobile" {...register('phone')} />
-      <TextInput key="address" label="Address" {...register('address')} />
+      <TextInput label="Email" {...register('email')} />
+      <NumberInput label="Mobile" {...register('phone')} />
+      <TextInput label="Address" {...register('address')} />
       {/* Update this to use select dropdown */}
-      <TextInput
-        key="ems"
-        label="Employment Status"
-        {...register('employmentStatus')}
-      />
-      <TextInput
-        key="emn"
-        label="Employer Name"
-        {...register('employerName')}
-      />
+      <TextInput label="Employment Status" {...register('employmentStatus')} />
+      <TextInput label="Employer Name" {...register('employerName')} />
       <NumberInput
-        key="income"
         label="Annual Income"
         {...register('annualIncome', { valueAsNumber: true })}
       />
