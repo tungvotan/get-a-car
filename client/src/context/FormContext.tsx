@@ -4,8 +4,16 @@ import { FormDataProps } from '../models/formModel';
 type FormContextType = {
   formData: FormDataProps;
   updateFormData: (data: Partial<FormDataProps>) => void;
-  lenderResult: LenderResultProps | undefined;
-  setLenderResult: (lenderResult: LenderResultProps | undefined) => void;
+  loanOffers: LoanResultProps | undefined;
+  setLoanOffers: (loanOffers: LoanResultProps | undefined) => void;
+};
+type LoanResultProps = Array<LoanOfferProps>;
+
+export type LoanOfferProps = {
+  lender: string;
+  monthlyPayment: number;
+  fees: number;
+  interestRate: number;
 };
 
 export const defaultFormData: FormDataProps = {
@@ -31,18 +39,11 @@ export const FormContext = createContext<FormContextType | undefined>(
   undefined
 );
 
-type LenderResultProps = Array<{
-  lender: string;
-  monthlyPayment: number;
-  fees: number;
-  interestRate: number;
-}>;
-
 export const FormProvider = ({ children }: { children: ReactNode }) => {
   const [formData, setFormDataProps] = useState<FormDataProps>(defaultFormData);
-  const [lenderResult, setLenderResult] = useState<
-    LenderResultProps | undefined
-  >(undefined);
+  const [loanOffers, setLoanOffers] = useState<LoanResultProps | undefined>(
+    undefined
+  );
 
   const updateFormData = (data: Partial<FormDataProps>) => {
     setFormDataProps((prev) => ({
@@ -53,7 +54,7 @@ export const FormProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <FormContext.Provider
-      value={{ formData, updateFormData, lenderResult, setLenderResult }}
+      value={{ formData, updateFormData, loanOffers, setLoanOffers }}
     >
       {children}
     </FormContext.Provider>

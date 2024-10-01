@@ -7,7 +7,10 @@ import { FormContext } from '../context/formContext';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { SelectInput } from '../components/SelectInput';
-import { PersonalDetailsFormProps, personalDetailsSchema } from '../models/formModel';
+import {
+  PersonalDetailsFormProps,
+  personalDetailsSchema,
+} from '../models/formModel';
 
 export const PersonalDetailsPage = () => {
   const navigate = useNavigate();
@@ -35,7 +38,9 @@ export const PersonalDetailsPage = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="p-8 max-w-md mx-auto">
-      <h1>Personal Details</h1>
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
+        Personal Details
+      </h1>
       <TextInput
         label="First name"
         {...register('firstName')}

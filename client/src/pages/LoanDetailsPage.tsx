@@ -16,15 +16,15 @@ const loanPurposeOptions = [
 ];
 
 export const LoanDetailsPage = () => {
-  const { formData, updateFormData, lenderResult, setLenderResult } =
+  const { formData, updateFormData, loanOffers, setLoanOffers } =
     useContext(FormContext)!;
   const navigate = useNavigate();
   useEffect(() => {
-    console.log('useEffect', lenderResult);
-    if (lenderResult) {
+    console.log('useEffect', loanOffers);
+    if (loanOffers) {
       navigate('/lender-result');
     }
-  }, [lenderResult, navigate]);
+  }, [loanOffers, navigate]);
 
   const {
     register,
@@ -39,7 +39,7 @@ export const LoanDetailsPage = () => {
     updateFormData({ loanDetails: data });
     submitForm(formData).then((res) => {
       if (res.outcome === 'SUCCESS') {
-        setLenderResult(res.data.loanOffers);
+        setLoanOffers(res.data.loanOffers);
       }
       // TODO: add error message
     });
@@ -51,7 +51,9 @@ export const LoanDetailsPage = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="p-8 max-w-md mx-auto">
-      <h1>Loan detail page</h1>
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
+        Loan detail page
+      </h1>
       <NumberInput
         label="Vehicle price"
         {...register('vehiclePrice', { valueAsNumber: true })}
