@@ -18,7 +18,7 @@ describe('Loan Details Form', () => {
     cy.get('button[type="submit"]').click();
   });
 
-  it('should show validation errors for empty required fields', () => {
+  it('should navigate to loan result page after submitting', () => {
     // Verify that the page navigates to the loan details page
     cy.url().should('include', '/loan-details');
     cy.get('input[name="vehiclePrice"]').clear().type('25000');

@@ -27,6 +27,9 @@ https://github.com/user-attachments/assets/05d3fdca-9fee-4dbd-9b95-29ed4b1f9854
 
 #### "Nice to Have" Features if Time Permitted:
 - **TypeScript Types**: Fix all the missing types and ensure strict type checking (currently marked as TODO and many more).
+- **Env configuration**: replace the hardcode baseUrl `localhost` with default env config.
+- **Base components accept styling input**: The base components don't support styling, so we can add more styling.
+- **Separating the label and input component**: will help in the long run as more control over the layout.
 - **Form Persistence**: Store form data in `localStorage` to allow users to resume where they left off if they leave the page.
 - **Accessibility Improvements**: Ensure that all form inputs and elements are fully accessible to users using screen readers.
 - **Localization**: Implement localization (i.e., multi-language support).
@@ -50,6 +53,11 @@ https://github.com/user-attachments/assets/05d3fdca-9fee-4dbd-9b95-29ed4b1f9854
 
    **Decision**: I implemented a secure CORS policy to restrict access to the API to localhost only and plan to add rate limiting to prevent abuse and brute force attacks. And basic logger for monitoring.
 
+4. **Shared Models Considerations**  
+   **Challenge**: There is duplicated code for form model  across both the frontend and backend. It would be straightforward to have it in a shared folder/package in monorepo style. However, there could be an issue when we want to treat the model differently (e.g adding new fields, converting types...) and framework changes.
+
+   **Decision**: Opt for decoupling the form models to maintain flexibility.
+
 #### Future Enhancements:
 - **Rate Limiting**: Add rate limiting to further secure the API and prevent abuse.
 - **Persistence Layer**: Switch to a NoSQL database for more scalable data handling as the app grows.
@@ -69,6 +77,22 @@ npm run bootstrap
 ```bash
 npm run start 
 ```
+The web client will start on local port `3000` and server with `3001`
+
+In case tmux is not an option, you can start them individually by
+
+For client
+```bash
+cd client
+npm run start
+```
+
+For server
+```bash
+cd server
+npm run start
+```
+
 
 ## Testing
 - Run API test:
