@@ -1,0 +1,163 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.watch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.dial {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  /* border: 10px solid #ccc; */
+  border-radius: 50%;
+  background-color: white;
+}
+
+/* Main hands */
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 2px;
+  height: 50%;
+  background-color: black;
+  transform-origin: bottom;
+}
+
+.hour-hand {
+  width: 4px;
+  height: 25%;
+  background-color: black;
+}
+
+.minute-hand {
+  width: 3px;
+  height: 40%;
+}
+
+.main-second-hand {
+  width: 2px;
+  height: 45%;
+  background-color: red;
+}
+
+/* Sub-dials */
+.sub-dial {
+  position: absolute;
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-minute-dial {
+  left: 75%;
+}
+
+.sub-second-hand,
+.chrono-minute-hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 1px;
+  height: 45%;
+  background-color: black;
+  transform-origin: bottom;
+}
+
+/* Controls */
+.controls {
+  margin-top: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Sub-dial numbers */
+.sub-dial-number {
+  position: absolute;
+  font-size: 10px; /* Adjust size for clarity */
+  font-weight: bold;
+}
+
+/* Position the numbers */
+.number-60 {
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.number-15 {
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+}
+
+.number-30 {
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.number-45 {
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+}
+
+.number-10 {
+  bottom: 10px; /* Number 10 at the bottom left */
+  left: 10px;
+}
+
+.number-20 {
+  bottom: 10px; /* Number 20 at the bottom right */
+  right: 10px;
+}
+
+/* Hour marks */
+.hour-mark {
+  position: absolute;
+  width: 4px;
+  height: 15px;
+  background: #333;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% 50%; /* Bottom center */
+}
+/* CSS for sub-dial labels */
+.sub-dial-number {
+  position: absolute;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  width: 20px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+}

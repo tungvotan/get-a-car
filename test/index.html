@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chronograph Watch Simulation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="watch">
+      <!-- Main Dial with Hour, Minute, and Timer Second Hand -->
+      <div class="dial">
+        <div class="hand hour-hand"></div>
+        <div class="hand minute-hand"></div>
+        <div class="hand main-second-hand"></div>
+        <!-- Sub-dial for Real Time Seconds -->
+        <div class="sub-dial real-time-second-dial">
+          <div class="hand sub-second-hand"></div>
+        </div>
+
+        <!-- Sub-dial for Real Time Seconds -->
+        <div class="sub-dial sub-minute-dial">
+          <div class="hand chrono-minute-hand"></div>
+        </div>
+      </div>
+
+      <!-- Controls for the Chronograph -->
+      <div class="controls">
+        <button id="start-btn">Start</button>
+        <button id="stop-btn">Stop</button>
+        <button id="reset-btn">Reset</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
